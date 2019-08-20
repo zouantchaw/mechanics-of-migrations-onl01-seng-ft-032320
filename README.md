@@ -88,9 +88,9 @@ Active Record 5.x, we must specify which version of Rails the migration
 was written for, even in situations like this lab where we do not have Rails
 configured.
 
-This lesson was originally created with gem versions that support Rails **4.2**,
+This lesson was originally created with gem versions that support Rails **5.2**,
 so we need to make have our `CreateArtist` migration inherit from
-`ActiveRecord::Migration[4.2]`.
+`ActiveRecord::Migration[5.2]`.
 
 Don't worry too much about this until you get to the Rails section. Until then,
 if you encounter an error like this...
@@ -99,10 +99,10 @@ if you encounter an error like this...
 Caused by:
 StandardError: Directly inheriting from ActiveRecord::Migration is not supported. Please specify the Rails release the migration was written for:
 
-  class CreateArtists < ActiveRecord::Migration[4.2]
+  class CreateArtists < ActiveRecord::Migration[5.2]
 ```
 
-...simply add `[4.2]` or whatever number is displayed to the end of
+...simply add `[5.2]` or whatever number is displayed to the end of
 `ActiveRecord::Migration` in your migration file, exactly as the error message
 instructs.
 
@@ -120,7 +120,7 @@ more common for basic migrations.
 ```ruby
 # db/migrate/01_create_artists.rb
 
-class CreateArtists < ActiveRecord::Migration[4.2]
+class CreateArtists < ActiveRecord::Migration[5.2]
   def change
   end
 end
@@ -223,7 +223,7 @@ No point in having a table that has no columns in it, so let us add a few:
 ```ruby
 # db/migrate/01_create_artists.rb
 
-class CreateArtists < ActiveRecord::Migration[4.2]
+class CreateArtists < ActiveRecord::Migration[5.2]
   def change
     create_table :artists do |t|
       t.string :name
@@ -384,7 +384,7 @@ To make this change we're going to need a new migration, which we'll call
 ```ruby
 # db/migrate/02_add_favorite_food_to_artists.rb
 
-class AddFavoriteFoodToArtists < ActiveRecord::Migration[4.2]
+class AddFavoriteFoodToArtists < ActiveRecord::Migration[5.2]
   def change
     add_column :artists, :favorite_food, :string
   end
