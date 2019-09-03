@@ -170,7 +170,13 @@ ActiveRecord::Base.connection.execute(sql)
 
 Using migrations, we will still need establish Active Record's connection to the
 database, but **_we no longer need the SQL!_** Instead of dealing with SQL
-directly, we provide the migrations we want and Active Record takes care of creating 
+directly, we provide the migrations body (in Ruby) and Active Record takes care of creating 
+complex SQL commands. This is less error-prone and _much easier_ to read.
+
+As a bonus, igrations, when paired with version control (`git`), create a record of changes
+to the database. If we just ran a command on the database, there's no undo, no opportunity
+for peer review and pull request behaviors. Migrations help programmers think about
+_purpose_ not _syntax_.
 
 Since we still need to connect to the database, let's make the connection
 inside `config/environment.rb`:
