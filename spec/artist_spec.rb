@@ -35,7 +35,9 @@ describe "Artist" do
     expect(Artist.find_by(name: "Taylor Swift")).to eq(taytay)
   end
 
-  it "can roll back to have no favorite_food attribute for Artist" do    
-    expect(Artist.column_names).to eq(["id", "name", "genre", "age", "hometown"])
+  context "after applying a `db:rollback` command that removes the favorite_food attribute" do
+   it "no longer has a favorite_food column in the 'artists' table" do
+      expect(Artist.column_names).to eq(["id", "name", "genre", "age", "hometown"])
+    end
   end
 end
